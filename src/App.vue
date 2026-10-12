@@ -1,11 +1,18 @@
-<script setup></script>
+<script setup>
+import Navbar from './components/Navbar.vue'
+import TheFooter from './components/TheFooter.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+   <header>
+      <Navbar /> <!-- En-tête permanent -->
+   </header>
+   <main>
+      <router-view /> <!-- Seul ce bloc central change selon la route -->
+   </main>
+   <footer>
+      <TheFooter /> <!-- Pied de page permanent sur toutes les pages -->
+   </footer>
 </template>
 
 <style scoped></style>
