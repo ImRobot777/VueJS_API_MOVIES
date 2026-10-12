@@ -1,0 +1,121 @@
+### --- Spring Boot & Maven ---
+target/
+!.mvn/wrapper/maven-wrapper.properties
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### --- Environment Files & Secrets ---
+.env
+.env.local
+.env.*.local
+!.env.example
+!.env.template
+application-local.properties
+application-local.yml
+application-*-local.properties
+
+### --- Cryptographic Keys & Certificates ---
+# NEVER commit private keys to Git!
+**/certs/private_key.pem
+*.key
+*.pem
+!**/certs/public_key.pem
+
+### --- Logs & JVM Error Reports ---
+*.log
+logs/
+hs_err_pid*
+replay_pid*
+
+### --- IntelliJ IDEA ---
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### --- Visual Studio Code ---
+.vscode/*
+!.vscode/extensions.json
+
+### --- Eclipse / Spring Tool Suite (STS) ---
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+### --- NetBeans ---
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### --- Operating System (OS) ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+
+# Linux / Generic Editors
+*~
+*.swp
+*.swo
+
+### --- Spring Initializr Auto-generated Documentation ---
+HELP.md
+
+### Vue JS / NPM INSTALL ###
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+
+
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.tsbuildinfo
+
+.eslintcache
+
+# Cypress
+/cypress/videos/
+/cypress/screenshots/
+
+# Vitest
+__screenshots__/
+
+# Vite
+*.timestamp-*-*.mjs
