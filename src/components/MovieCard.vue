@@ -7,19 +7,21 @@ defineProps({
 <template>
    <div>
       <h2><strong>{{ movieFromList.title }}</strong> ({{ movieFromList.year }})</h2>
-      <!-- Miniature -->
-      <img
-         v-if="movieFromList.poster"
-         :src="movieFromList.poster"
-         :alt="movieFromList.title"
-         width="120"
-      />
+      <!-- Miniature + link -->
       <p>
-         Type: <span>{{ movieFromList.genres?.map(g => g.label).join(', ') }}</span>
+         <router-link :to="'/movies/' + movieFromList.id">
+            <img
+               v-if="movieFromList.poster"
+               :src="movieFromList.poster"
+               :alt="movieFromList.title"
+               width="110"
+            />
+         </router-link>
       </p>
       <p>
-         <router-link :to="'/movies/' + movieFromList.id">See details</router-link>
+         Genres: <span>{{ movieFromList.genres?.map(g => g.label).join(', ') }}</span>
       </p>
+
       <hr>
    </div>
 </template>
