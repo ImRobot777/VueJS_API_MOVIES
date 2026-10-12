@@ -15,7 +15,7 @@ defineProps({
          width="120"
       />
       <p>
-         Type: <span>Type : {{ movieFromList.genres?.map(g => g.label).join(', ') }}</span>
+         Type: <span>{{ movieFromList.genres?.map(g => g.label).join(', ') }}</span>
       </p>
       <p>
          <router-link :to="'/movies/' + movieFromList.id">See details</router-link>
