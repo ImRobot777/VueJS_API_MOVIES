@@ -2,9 +2,7 @@
 // Logic will come here
 </script>
 <template>
-   <div>
-      <h2>MOVIE DETAIL</h2>
-   </div>
+   <h1>📄 Détail du Film</h1>
 </template>
 
 <style scoped>

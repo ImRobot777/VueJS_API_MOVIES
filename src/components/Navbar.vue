@@ -2,9 +2,9 @@
 // Logic will come here
 </script>
 <template>
-   <div>
-      <h2>NAVBAR</h2>
-   </div>
+   <nav>
+      <router-link to="/">Accueil</router-link>
+   </nav>
 </template>
 
 <style scoped>
