@@ -1,6 +1,7 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import {ref, onMounted} from 'vue'
 import api from '@/services/api'
+import MovieCard from '@/components/MovieCard.vue'
 
 // 1. Reactive state variables
 const movies = ref([]) // 1. Data state : empty array waiting for server payload
@@ -31,18 +32,18 @@ onMounted(async () => {
 <template>
    <div>
       <h1>🎬 Catalogue des Films</h1>
-
       <!-- State 1 : Loading -->
       <p v-if="loading">Movies list is loading...</p>
       <!-- State 2 : Display possible error -->
       <p v-else-if="error" style="color: red;">{{ error }}</p>
       <!-- State 3 : Success -->
       <ul v-else>
-         <li v-for="movie in movies" :key="movie.id">
-            <strong>{{ movie.title }}</strong> ({{ movie.year }})
-         </li>
+         <MovieCard
+            v-for="movie in movies"
+            :key="movie.id"
+            :movieFromList="movie"
+         />
       </ul>
-
    </div>
 </template>
 
