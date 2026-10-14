@@ -1,31 +1,17 @@
 <script setup>
-import {ref, onMounted} from 'vue'
+import {onMounted} from 'vue'
 import {useRoute} from 'vue-router'
-import api from '@/services/api'
+import { useMoviesStore } from '@/stores/movies'
 
 // 1. Retrieve current route and movie ID parameter
 const route = useRoute() // route.params.id will contain the movie's id (ie: 22567)
 
-// 2. Reactive state variables
-const movie = ref(null) // 1. Data state : Holds a single movie object, null initially
-const loading = ref(false) // 2. Loading state : true while the network request is pending
-const error = ref(null) // 3. Error state : stores error message if request fails
+// 2. Instantiate the Pinia store
+const moviesStore = useMoviesStore() //4 will handle movies, loading and error vars !!!
 
 // 3. Fetch specific movie data when view is mounted
-onMounted(async () => {
-   loading.value = true
-   try {
-      const response = await api.get(`/movies/${route.params.id}`)
-      if (response.data == undefined || response.data.length <= 0) {
-         error.value = "Failed to load movie details: Code 0"
-      } else {
-         movie.value = response.data
-      }
-   } catch (err) {
-      error.value = 'Failed to load movie details: ' + err.message
-   } finally {
-      loading.value = false
-   }
+onMounted(() => {
+   moviesStore.fetchMovieById(route.params.id)// get id from route
 })
 
 </script>
@@ -36,37 +22,37 @@ onMounted(async () => {
          <router-link to="/">⬅ Back to catalog</router-link>
       </p>
       <!-- State 1 : Loading -->
-      <p v-if="loading">Loading movie details...</p>
+      <p v-if="moviesStore.loading">Loading movie details...</p>
       <!-- State 2 : Error -->
-      <p v-else-if="error" style="color: red;">{{ error }}</p>
+      <p v-else-if="moviesStore.error" style="color: red;">{{ moviesStore.error }}</p>
       <!-- State 3 : Success -->
-      <article v-else-if="movie">
-         <h1>{{ movie.title }} ({{ movie.year }})</h1>
-         <p v-if="movie.averageRating">
-            ⭐ <strong>Average rating :</strong> {{ movie.averageRating }} / 10
+      <article v-else-if="moviesStore.currentMovie">
+         <h1>{{ moviesStore.currentMovie.title }} ({{ moviesStore.currentMovie.year }})</h1>
+         <p v-if="moviesStore.currentMovie.averageRating">
+            ⭐ <strong>Average rating :</strong> {{ moviesStore.currentMovie.averageRating }} / 10
          </p>
          <!-- Conteneur flex à 2 colonnes -->
          <div class="movie-content">
             <!-- Colonne 1 (Gauche) : Affiche -->
             <img
-               v-if="movie.poster"
-               :src="movie.poster"
-               :alt="movie.title"
+               v-if="moviesStore.currentMovie.poster"
+               :src="moviesStore.currentMovie.poster"
+               :alt="moviesStore.currentMovie.title"
                width="500"
             />
             <!-- Colonne 2 (Droite) : Détails textuels -->
             <div class="movie-info">
                <p>
-                  <strong>Genres :</strong> {{ movie.genres?.map(g => g.label).join(', ') }}
+                  <strong>Genres :</strong> {{ moviesStore.currentMovie.genres?.map(g => g.label).join(', ') }}
                </p>
                <p>
-                  <strong>Director(s) :</strong> {{ movie.directors?.map(d => d.fullName).join(', ') }}
+                  <strong>Director(s) :</strong> {{ moviesStore.currentMovie.directors?.map(d => d.fullName).join(', ') }}
                </p>
                <p>
-                  <strong>Casting :</strong> {{ movie.castMembers?.map(a => a.fullName).join(', ') }}
+                  <strong>Casting :</strong> {{ moviesStore.currentMovie.castMembers?.map(a => a.fullName).join(', ') }}
                </p>
                <h3>Plot :</h3>
-               <p>{{ movie.fullPlot || movie.plot || 'Aucun synopsis disponible.' }}</p>
+               <p>{{ moviesStore.currentMovie.fullPlot || moviesStore.currentMovie.plot || 'Aucun synopsis disponible.' }}</p>
             </div>
          </div>
       </article>
