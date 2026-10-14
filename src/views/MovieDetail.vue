@@ -17,10 +17,6 @@ onMounted(() => {
 </script>
 <template>
    <div>
-      <!-- Navigation back to catalog -->
-      <p>
-         <router-link to="/">⬅ Back to catalog</router-link>
-      </p>
       <!-- State 1 : Loading -->
       <p v-if="moviesStore.loading">Loading movie details...</p>
       <!-- State 2 : Error -->
