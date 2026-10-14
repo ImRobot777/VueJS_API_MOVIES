@@ -2,6 +2,7 @@
 import {onMounted} from 'vue'
 import { useMoviesStore } from '@/stores/movies'
 import MovieCard from '@/components/MovieCard.vue'
+import Pagination from '@/components/Pagination.vue'
 
 // 1. Instantiate the Pinia store
 const moviesStore = useMoviesStore() //4 will handle movies, loading and error vars !!!
@@ -28,6 +29,11 @@ onMounted(() => {
             :movieFromList="movie"
          />
       </ul>
+      <Pagination
+         :current-page="moviesStore.currentPage"
+         :has-next="moviesStore.movies.length === moviesStore.itemsPerPage"
+         @change-page="(newPage) => moviesStore.fetchMovies(newPage)"
+      />
    </div>
 </template>
 
