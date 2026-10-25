@@ -1,5 +1,13 @@
 # SensPasCritique (Movie Discovery & Social Reviews Web App)
 
+[![Vue.js](https://img.shields.io/badge/Vue.js-3.5-4FC08D?style=flat&logo=vuedotjs&logoColor=white)](https://vuejs.org/)
+[![Vite](https://img.shields.io/badge/Vite-8.2-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Pinia](https://img.shields.io/badge/Pinia-State%20Management-FFE566?style=flat&logo=pinia&logoColor=black)](https://pinia.vuejs.org/)
+[![Vue Router](https://img.shields.io/badge/Vue%20Router-SPA%20Navigation-42B883?style=flat&logo=vuedotjs&logoColor=white)](https://router.vuejs.org/)
+[![Axios](https://img.shields.io/badge/Axios-REST%20Client-5A29E4?style=flat&logo=axios&logoColor=white)](https://axios-http.com/)
+[![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=flat&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
+[![Symfony API Platform](https://img.shields.io/badge/Backend-Symfony%20%2F%20API%20Platform-000000?style=flat&logo=symfony&logoColor=white)](https://api-platform.com/)
+
 A modern, responsive Single Page Application (SPA) built with **Vue.js 3**, **Vite**, **Pinia**, and **Vue Router**, consuming a headless **Symfony / API Platform** REST backend.
 
 Inspired by collaborative entertainment and media platforms like SensCritique, this project allows cinema enthusiasts to discover films, write reviews, manage personal watchlists, and follow other cinephiles.
